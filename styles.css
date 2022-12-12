@@ -1,0 +1,19 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+#draw-container {
+    display: flex;
+    flex-flow: row wrap;
+    width: 440px;
+    border: 1px solid red;
+    padding: 24px;
+}
+
+#draw-container div {
+    width: 24px;
+    height: 24px;
+    border: 1px solid green;
+}
