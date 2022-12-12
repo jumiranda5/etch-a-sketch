@@ -12,6 +12,7 @@
     border: 1px solid red;
 }
 
-#draw-container div:hover {
-    background-color: black;
+#draw-container div {
+    border-bottom: 1px solid lightgrey;
+    border-right: 1px solid lightgrey;
 }
