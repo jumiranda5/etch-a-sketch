@@ -29,6 +29,7 @@ function createDrawSquares(cols=16) {
         let mouseDown = false;
         drawContainer.addEventListener('mousedown', () => mouseDown = true);
         drawContainer.addEventListener('mouseup', () => mouseDown = false);
+        drawContainer.addEventListener('mouseleave', () => mouseDown = false);
         square.addEventListener('mouseenter', (e) => {
             if (mouseDown) {
                 e.target.style.background = 'black';
