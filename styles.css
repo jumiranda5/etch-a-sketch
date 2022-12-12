@@ -7,13 +7,11 @@
 #draw-container {
     display: flex;
     flex-flow: row wrap;
-    width: 440px;
+    width: 402px;
+    height: 402px;
     border: 1px solid red;
-    padding: 24px;
 }
 
-#draw-container div {
-    width: 24px;
-    height: 24px;
-    border: 1px solid green;
+#draw-container div:hover {
+    background-color: black;
 }
