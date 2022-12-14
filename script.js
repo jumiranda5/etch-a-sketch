@@ -1,17 +1,21 @@
-// Change square size
-var slider = document.getElementById("slider");
+let columns = 16;
 
-// Update the current slider value (each time you drag the slider handle)
+// Change square size (each time you drag the slider handle)
+const slider = document.getElementById("slider");
+
 slider.oninput = function() {
-    console.log(this.value)
-
-    // clear draw container
-    const drawContainer = document.querySelector('#draw-container');
-    drawContainer.textContent = '';
-
-    // Add new squares
-    createDrawSquares(this.value)
+    columns = this.value;
+    clear();
 }
+
+// Buttons
+const btnClear = document.querySelector('#clear');
+const btnErase = document.querySelector('#erase');
+
+btnClear.addEventListener('click', () => clear());
+
+//btnErase.addEventListener('click', () => TODO);
+
 
 // Create squares inside draw container default = 16x16
 function createDrawSquares(cols=16) {
@@ -36,7 +40,15 @@ function createDrawSquares(cols=16) {
             }
         });
         square.addEventListener('click', (e) => e.target.style.background = 'black');
+        
     }
+}
+
+// Rewrite draw container
+function clear() {
+    const drawContainer = document.querySelector('#draw-container');
+    drawContainer.textContent = '';
+    createDrawSquares(columns)
 }
 
 createDrawSquares();

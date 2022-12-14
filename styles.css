@@ -145,6 +145,10 @@ button:active {
 
 /* Draw container */
 
-#draw-container {
+.draw-container > div {
     background-color: #FFFFFF;
+}
+
+.draw-container > div:hover {
+    background-color: #e3e3e3;
 }
