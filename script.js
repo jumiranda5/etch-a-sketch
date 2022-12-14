@@ -82,4 +82,8 @@ function setSquareColorChange(square, color) {
     });
     square.addEventListener('click', (e) => e.target.style.background = color);
 
+    // Prevent mouse down and up events on square div => it conflicts with the parent div events
+    square.addEventListener('mousedown', (e) => e.preventDefault());
+    square.addEventListener('mouseup', (e) => e.preventDefault());
+
 }
