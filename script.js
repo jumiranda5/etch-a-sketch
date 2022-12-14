@@ -84,8 +84,6 @@ function erase() {
 // Set square to change background color on mouse click and drag
 function setSquareColorChange(square, color) {
 
-    console.log("...");
-
     square.addEventListener('mouseenter', (e) => {
         if (mouseDown) {
             e.target.style.background = color;
