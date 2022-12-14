@@ -4,6 +4,7 @@ let columns = 16;
 let eraseSelected = false;
 let selectedColor = "#000000";
 
+
 // Draw container
 const drawContainer = document.querySelector('#draw-container');
 let mouseDown = false;
@@ -11,24 +12,26 @@ drawContainer.addEventListener('mousedown', () => mouseDown = true);
 drawContainer.addEventListener('mouseup', () => mouseDown = false);
 drawContainer.addEventListener('mouseleave', () => mouseDown = false);
 
+
 // Init draw container creating columns and rows
 createDrawSquares();
 
+
 // Change square size (each time you drag the slider handle)
 const slider = document.getElementById("slider");
-slider.onmousemove = (e) => columns = e.target.value;
-slider.onchange = (e) => clear();
+slider.onchange = (e) => {
+    columns = e.target.value;
+    clear();
+}
 
 
 // Color input
 const colorPicker = document.querySelector('#color-picker');
 colorPicker.addEventListener("input", (e) => {
     selectedColor = e.target.value;
-    const squareList = document.querySelectorAll("#draw-container > div");
-    for (let i = 0; i < squareList.length; i++) {
-        setSquareColorChange(squareList[i], selectedColor);
-    }
+    changeColor(selectedColor);
 });
+
 
 // Buttons
 const btnClear = document.querySelector('#clear');
@@ -52,33 +55,31 @@ function createDrawSquares(cols=16) {
     }
 }
 
+
 // Rewrite draw container
 function clear() {
     drawContainer.textContent = '';
+    console.log(columns)
     createDrawSquares(columns)
 }
+
 
 // Change squares backgrounds back to white
 function erase() {
 
-    const squareList = document.querySelectorAll("#draw-container > div");
-
     if (eraseSelected) {
         eraseSelected = false;
         btnErase.style.background = "#e8e8e8";
-        for (let i = 0; i < squareList.length; i++) {
-            setSquareColorChange(squareList[i], selectedColor);
-        }
+        changeColor(selectedColor);
     }
     else {
         eraseSelected = true;
         btnErase.style.background = "#f1e776";
-        for (let i = 0; i < squareList.length; i++) {
-            setSquareColorChange(squareList[i], "#FFFFFF");
-        }
+        changeColor("#FFFFFF");
     }
 
 }
+
 
 // Set square to change background color on mouse click and drag
 function setSquareColorChange(square, color) {
@@ -93,6 +94,17 @@ function setSquareColorChange(square, color) {
     square.addEventListener('click', (e) => e.target.style.background = color);
 
     // Prevent mouse down events on square div => it conflicts with the parent div events
-    square.addEventListener('mousedown', (e) => e.preventDefault());
+    square.addEventListener('mousedown', (e) => {
+        e.preventDefault();
+        e.target.style.background = color;
+    });
 
+}
+
+
+function changeColor(color) {
+    const squareList = document.querySelectorAll("#draw-container > div");
+    for (let i = 0; i < squareList.length; i++) {
+        setSquareColorChange(squareList[i], color);
+    }
 }
