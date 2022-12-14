@@ -4,18 +4,33 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="styles.css"/>
         <script src="script.js" defer></script>
         <title>Etch a Sketch</title>
     </head>
     <body>
 
-        <h1>Etch a Sketch!</h1>
+        <h1 class="title">ETCH A SKETCH!</h1>
 
-        <label for="slider">Size:</label>
-        <input id="slider" type="range" min="4" max="64" value="24">
+        <div class="container flex">
+            <div class="btn-container">
+                <label for="slider">Columns:</label>
+                <input class="slider" id="slider" type="range" min="4" max="64" value="24">
 
-        <div id="draw-container"></div>
+                <div class="color-div flex">
+                    <label class="color-label" for="color-picker">Color:</label>
+                    <input id="color-picker" class="color-picker" type="color" value="#000000">
+                </div>
+
+                <button>Eraser</button>
+                <button>Clear</button>
+            </div>
+    
+            <div class="draw-container flex" id="draw-container"></div>
+        </div>
     
     </body>
 </html>

@@ -21,7 +21,7 @@ function createDrawSquares(cols=16) {
     for (let i = 0; i < squares; i++) {
         // Add container square
         const square = document.createElement('div');
-        const size = 400 / cols;
+        const size = 480 / cols;
         square.setAttribute('style', `width: ${size}px; height: ${size}px;`); 
         drawContainer.appendChild(square);
 
